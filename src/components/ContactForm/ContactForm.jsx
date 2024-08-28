@@ -1,8 +1,14 @@
+import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, selectContacts } from "../../redux/contactsSlice";
 import s from "./ContactForm.module.css";
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+
   const formSchema = Yup.object({
     name: Yup.string()
       .required("please fill in the field")
@@ -20,8 +26,16 @@ const ContactForm = ({ onSubmit }) => {
   };
 
   const handleSubmit = (data, actions) => {
-    onSubmit(data);
-    actions.resetForm();
+    const contactExists = contacts.some(
+      (contact) => contact.name.toLowerCase() === data.name.toLowerCase()
+    );
+
+    if (contactExists) {
+      alert(`${data.name} is already in contacts.`);
+    } else {
+      dispatch(addContact(data));
+      actions.resetForm();
+    }
   };
 
   return (
