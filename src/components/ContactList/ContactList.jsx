@@ -20,9 +20,9 @@ const ContactList = () => {
 
   return (
     <div className={s.wrapper}>
-      {filteredContacts.map(contact => (
+      {filteredContacts.map((contact) => (
         <Contact
-          key={contact.id}
+          key={contact.id} 
           contact={contact}
           handleDelete={handleDelete}
         />

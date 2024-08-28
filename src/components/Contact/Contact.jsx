@@ -1,7 +1,15 @@
-import { FaRegUser, FaPhone } from 'react-icons/fa';
-import s from './Contact.module.css';
+import { FaRegUser, FaPhone } from "react-icons/fa";
+import { useDispatch } from "react-redux"; 
+import { deleteContact } from "../../redux/contactsSlice"; 
+import s from "./Contact.module.css";
 
-const Contact = ({ contact, handleDelete }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    dispatch(deleteContact(id)); 
+  };
+
   return (
     <div className={s.wrapper}>
       <div>
