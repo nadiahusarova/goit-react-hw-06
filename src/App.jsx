@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div className={s.wrap}>
-      <h1 className={s.style}>Phonebook</h1>
+      <h1 className={s.h1}>Phonebook</h1>
 
       <ContactForm />
 

@@ -1,8 +1,7 @@
 import { FaRegUser, FaPhone } from 'react-icons/fa';
-
 import s from './Contact.module.css';
 
-const Contact = ({ contact, handleDelete, id }) => {
+const Contact = ({ contact, handleDelete }) => {
   return (
     <div className={s.wrapper}>
       <div>
@@ -16,7 +15,7 @@ const Contact = ({ contact, handleDelete, id }) => {
         </p>
       </div>
       <button
-        onClick={() => handleDelete(id)}
+        onClick={() => handleDelete(contact.id)}
         type="button"
         className={s.button}
       >
